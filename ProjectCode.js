@@ -1,12 +1,11 @@
- //UC 1  
+// UC 1  
 const IS_ABSENT = 0;  
 
 let empCheck = Math.floor(Math.random() * 10) % 2;  
-if (empCheck == IS_ABSENT) {  
+if (empCheck === IS_ABSENT) {  
     console.log("Employee is Absent");  
-    return;  
 } else {  
-    console.log("Employee is PRESENT ");  
+    console.log("Employee is PRESENT");  
 }  
 
 // UC 2  
@@ -17,7 +16,6 @@ const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;  
 
 let empHrs = 0;   
-empHrs = 0;  
 empCheck = Math.floor(Math.random() * 10) % 3;  
 switch (empCheck) {  
     case IS_PART_TIME:  
@@ -27,13 +25,10 @@ switch (empCheck) {
         empHrs = FULL_TIME_HOURS;  
         break;  
     default:  
-        empHrs = 4;  
+        empHrs = 0; // Default for absent  
 }  
 
-let empWage = empHrs * WAGE_PER_HOUR;   
-empWage = 80;   
-empHrs = 4;   
-WAGE_PER_HOUR = 20;   
+ empWage = empHrs * WAGE_PER_HOUR;  
 console.log('Emp Wage: ' + empWage);  
 
 // UC 3  
@@ -51,27 +46,41 @@ function getWorkingHours(empCheck) {
 empCheck = Math.floor(Math.random() * 10) % 3;  
 empHrs = getWorkingHours(empCheck);  
 
-empWage = empHrs * WAGE_PER_HOUR;  // Corrected empWage calculation  
-console.log('Emp Wage: ' + empWage);
+empWage = empHrs * WAGE_PER_HOUR;  
+console.log('Emp Wage: ' + empWage);  
 
 // UC 4  
 const NUM_OF_WORKING_DAYS = 2;  
- empHrs = 0;  
+empHrs = 0;  
 for (let day = 0; day < NUM_OF_WORKING_DAYS; day++) {  
-    let empCheck = Math.floor(Math.random() * 10) % 3;  
+    empCheck = Math.floor(Math.random() * 10) % 3;  
     empHrs += getWorkingHours(empCheck);  
 }  
 
- empWage = empHrs * WAGE_PER_HOUR;  
+empWage = empHrs * WAGE_PER_HOUR;  
 console.log('Total Hrs: ' + empHrs + ' Emp Wage: ' + empWage);  
 
-// while Loop Statement  
+// UC 5  
+const MAX_HRS_IN_MONTH = 100;  
+const NUM_OF_WORKING_DAYS_MONTH = 20; // Avoid any confusion with previous variable  
+let totalEmpHrs = 0;  
+let totalWorkingDays = 0;  
 
+while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS_MONTH) {  
+    totalWorkingDays++;  
+    let empCheck = Math.floor(Math.random() * 10) % 3;  
+    totalEmpHrs += getWorkingHours(empCheck); // Use the defined function here  
+}  
+
+let empWage = totalEmpHrs * WAGE_PER_HOUR;  
+console.log("UC 5: Total Days: " + totalWorkingDays + " Total Emp Hrs: " + totalEmpHrs + " Emp Wage: " + empWage);  
+
+// while Loop Statement  
 let dogs = ['Bulldog', 'Beagle', 'Labrador'];  
 let allDogs = [];  
+let i = 0; // Initialize i before using it  
 while (i < dogs.length) {  
     allDogs.push(dogs[i]);  
     i++;  
 }  
 console.log('While: ' + allDogs);  
- 
