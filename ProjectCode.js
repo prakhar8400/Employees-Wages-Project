@@ -53,4 +53,25 @@ empHrs = getWorkingHours(empCheck);
 
 empWage = empHrs * WAGE_PER_HOUR;  // Corrected empWage calculation  
 console.log('Emp Wage: ' + empWage);
+
+// UC 4  
+const NUM_OF_WORKING_DAYS = 2;  
+ empHrs = 0;  
+for (let day = 0; day < NUM_OF_WORKING_DAYS; day++) {  
+    let empCheck = Math.floor(Math.random() * 10) % 3;  
+    empHrs += getWorkingHours(empCheck);  
+}  
+
+ empWage = empHrs * WAGE_PER_HOUR;  
+console.log('Total Hrs: ' + empHrs + ' Emp Wage: ' + empWage);  
+
+// while Loop Statement  
+
+let dogs = ['Bulldog', 'Beagle', 'Labrador'];  
+let allDogs = [];  
+while (i < dogs.length) {  
+    allDogs.push(dogs[i]);  
+    i++;  
+}  
+console.log('While: ' + allDogs);  
  
