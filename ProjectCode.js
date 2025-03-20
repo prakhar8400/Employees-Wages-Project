@@ -28,7 +28,7 @@ switch (empCheck) {
         empHrs = 0; // Default for absent  
 }  
 
- empWage = empHrs * WAGE_PER_HOUR;  
+let empWage = empHrs * WAGE_PER_HOUR;  
 console.log('Emp Wage: ' + empWage);  
 
 // UC 3  
@@ -68,14 +68,14 @@ let totalWorkingDays = 0;
 
 while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS_MONTH) {  
     totalWorkingDays++;  
-    let empCheck = Math.floor(Math.random() * 10) % 3;  
+    empCheck = Math.floor(Math.random() * 10) % 3;  
     totalEmpHrs += getWorkingHours(empCheck); // Use the defined function here  
 }  
 
-let empWage = totalEmpHrs * WAGE_PER_HOUR;  
+empWage = totalEmpHrs * WAGE_PER_HOUR;  
 console.log("UC 5: Total Days: " + totalWorkingDays + " Total Emp Hrs: " + totalEmpHrs + " Emp Wage: " + empWage);  
 
-// while Loop Statement  
+// While Loop Statement  
 let dogs = ['Bulldog', 'Beagle', 'Labrador'];  
 let allDogs = [];  
 let i = 0; // Initialize i before using it  
@@ -84,3 +84,25 @@ while (i < dogs.length) {
     i++;  
 }  
 console.log('While: ' + allDogs);  
+
+// UC 6 Arrays  
+function calcDailyWage(empHrs) {  
+    return empHrs * WAGE_PER_HOUR;  
+}  
+
+const MAX_HRS_IN_MONTH_ARRAY = 160;  
+const NUM_OF_WORKING_DAYS_ARRAY = 20;  
+totalEmpHrs = 0;  
+totalWorkingDays = 0;  
+let empWageArr = [];  
+
+while (totalEmpHrs < MAX_HRS_IN_MONTH_ARRAY && totalWorkingDays < NUM_OF_WORKING_DAYS_ARRAY) {  
+    totalWorkingDays++;  
+    empCheck = Math.floor(Math.random() * 10) % 3;  
+    let empHrsForDay = getWorkingHours(empCheck);  
+    totalEmpHrs += empHrsForDay;  
+    empWageArr.push(calcDailyWage(empHrsForDay));  
+}  
+
+let totalEmpWage = empWageArr.reduce((acc, wage) => acc + wage, 0);  
+console.log("UC 6: Total Days: " + totalWorkingDays + " Total Hours: " + totalEmpHrs + " Total Emp Wage: " + totalEmpWage);  
